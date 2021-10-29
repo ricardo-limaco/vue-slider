@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -16,15 +17,17 @@
 </head>
 
 <body>
-  
+
   <section class="container _pt-main" id="root">
     <div class="row">
 
       <!-- Hero -->
       <div class="col-10 p-0 bg-primary _container-hero">
 
-        <div class="_image-container" v-for="image in imageList">
-          <img v-bind:src="image.url" alt="">
+        <div class="_image-container" v-bind:class="i === currentActiveImage ? `_active` : ``"
+          v-for="image, i in imageList">
+
+          <img v-bind:src="image.url" v-bind:alt="`img-` + (i + 1)">
 
           <div class="_text-container">
             <h3 class="_title">{{image.title}}</h3>
@@ -32,16 +35,22 @@
           </div>
         </div>
 
-     
+
       </div>
 
       <!-- Sidebar -->
       <div class="col-2 position-relative p-0 bg-success _sidebar-container">
 
+        <img v-for="image, i in imageList"
+             v-bind:class="i === currentActiveImage ? `_active-preview` : ``"
+             v-bind:src="image.url"
+             v-bind:alt="`img-` + (i + 1)">
 
         <!-- Arrow -->
-        <i class="fas fa-chevron-up _arrow _arrow-up" v-bind:></i>
-        <i class="fas fa-chevron-down _arrow _arrow-down" v-bind:></i>
+        <i class="fas fa-chevron-up _arrow _arrow-up" @click="arrowUp"></i>
+        <i class="fas fa-chevron-down _arrow _arrow-down" @click="arrowDown"></i>
+
+
       </div>
 
     </div>
@@ -52,4 +61,5 @@
 
   <script src="js/script.js"></script>
 </body>
+
 </html>
