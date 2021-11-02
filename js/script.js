@@ -32,20 +32,23 @@ new Vue({
       ],
     currentActiveImage: 0,
   },
+
   methods: {
-    arrowUp () {
+
+    arrowUp() {
       let item = this.currentActiveImage - 1;
 
       if (item < 0) {
-        item = this.imageList.lenght - 1;
+        item = this.imageList.length - 1;
       }
 
       this.currentActiveImage = item
     },
-    arrowDown () {
+
+    arrowDown() {
       let item = this.currentActiveImage + 1;
 
-      if (item > this.imageList.lenght - 1) {
+      if (item > this.imageList.length - 1) {
         item = 0;
       }
 
